@@ -10,7 +10,7 @@ void jackpot(int n, int r) {
   for (i = 0; i < n; i++) {
     carreteis[i] = create(r + 1);
 
-    elem = rand() % 10;
+    elem = rand() % 10; // primeiro elemento é gerado aleatóriamente
 
     for (j = 0; j < r; j++) {
       enqueue(carreteis[i], elem);
@@ -47,8 +47,8 @@ void jackpot(int n, int r) {
 
 int main() {
   srand(time(NULL));
-  int n = 3;  /*número de carretéis*/
-  int r = 10; /*sequência de números em cada carretel*/
+  int n = 3; /*número de carretéis*/
+  int r = 9; /*sequência de números em cada carretel*/
   jackpot(n, r);
 
   return 0;
