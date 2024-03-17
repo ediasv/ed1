@@ -1,8 +1,11 @@
 #include "queue.h"
 #include <time.h>
 
+#define ROLAGENS 6
+
 void jackpot(int n, int r) {
   Queue **carreteis;
+  Queue *carr[n];
   int i, j, elem, venceu;
 
   // Criando (e preenchendo) n carreteis de (r + 1) posicoes
@@ -21,7 +24,7 @@ void jackpot(int n, int r) {
     }
   }
 
-  for (i = 0; i < 6; i++) {
+  for (i = 0; i < ROLAGENS; i++) { // efeito de caça níqueis
     for (j = 0; j < n; j++) {
       elem = dequeue(carreteis[j]);
       enqueue(carreteis[j], elem);
@@ -32,8 +35,10 @@ void jackpot(int n, int r) {
 
   venceu = front(carreteis[0]);
   for (i = 1; i < n; i++) {
-    if (venceu != front(carreteis[i]))
+    if (venceu != front(carreteis[i])) {
       venceu = -1;
+      break;
+    }
   }
 
   if (venceu != -1)
@@ -47,8 +52,8 @@ void jackpot(int n, int r) {
 
 int main() {
   srand(time(NULL));
-  int n = 3; /*número de carretéis*/
-  int r = 9; /*sequência de números em cada carretel*/
+  int n = 3;  /*número de carretéis*/
+  int r = 10; /*sequência de números em cada carretel*/
   jackpot(n, r);
 
   return 0;
