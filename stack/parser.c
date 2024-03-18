@@ -6,28 +6,29 @@ int parser(char *c) {
   while (c[i] != '\0') {
     /*Terminar*/
     /*Utilizar somente as operações push, pop, empty, ... (interface)*/
-    if (c[i] == ']' || c[i] == ')') {
-      if (empty(s) || get_peek(s) != '(' || get_peek(s) != '[')
-        return 0;
-      else if (get_peek(s) != '(' || get_peek(s) != '[')
-        return 0;
-      else
-        pop(s);
-    } else {
+    if (empty(s) && (c[i] == ')' || c[i] == ']'))
+      return 0;
+    else if (c[i] == ')' && pop(s) != '(')
+      return 0;
+    else if (c[i] == ']' && pop(s) != '[')
+      return 0;
+    else if (c[i] == '(' || c[i] == '[')
       push(s, c[i]);
-    }
     /* ============================ */
     i++;
   }
-  return 1;
+  if (empty(s))
+    return 1;
+  else
+    return 0;
 }
 
 int main() {
-  char *c = "( ( ) [ ( ) ] )";
+  // char *c = "( ( ) [ ( ) ] )";
   // char *c = "( [ ) ]";
   // char *c = "( ) [ ]";
   // char *c = "( [ ]";
-  // char *c = ") (";
+  char *c = ") (";
   if (parser(c))
     printf("true  (bem formada)\n");
   else
