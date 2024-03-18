@@ -13,12 +13,13 @@ int main() {
   print(s);
 
   /*TERMINAR*/
+
   Stack *aux = create(tam);
+  int elem;
   while (!empty(s)) {
-    if (get_peek(s) % 2)
-      push(aux, pop(s));
-    else
-      pop(s);
+    elem = pop(s);
+    if (elem % 2)
+      push(aux, elem);
   }
 
   while (!empty(aux))
