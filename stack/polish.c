@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdio.h>
 
 void reversed_polish_notation(char *c) {
   Stack *s = create(strlen(c));
@@ -18,6 +19,7 @@ void reversed_polish_notation(char *c) {
     /* ================================================================*/
     i++;
   }
+  printf("\n");
   destroy(s);
 }
 
