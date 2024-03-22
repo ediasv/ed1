@@ -19,7 +19,6 @@ void reversed_polish_notation(char *c) {
     /* ================================================================*/
     i++;
   }
-  printf("\n");
   destroy(s);
 }
 
