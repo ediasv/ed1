@@ -12,7 +12,18 @@ List *insert_front(List *l, int elem) {
 }
 
 /* */
-List *insert_back(List *l, int elem) { /* Terminar! */ }
+List *insert_back(List *l, int elem) { /* Terminar! */
+  List *node = (List *)malloc(sizeof(List));
+  node->data = elem;
+  node->next = NULL;
+  if (l == NULL)
+    return node;
+  List *tmp = l;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  tmp->next = node;
+  return l;
+}
 
 /* */
 List *search(List *l, int elem) {
