@@ -7,12 +7,9 @@ void reversed_polish_notation(char *c) {
   while (c[i] != '\0') {
     /*Terminar*/
     /*Utilizar somente as operações push, pop, empty, ... (interface)*/
-    if (c[i] == '(')
-      push(s, c[i]);
-    else if (c[i] == ')') {
+    if (c[i] == ')')
       printf("%c ", pop(s));
-      pop(s);
-    } else if (c[i] >= '0' && c[i] <= '9')
+    else if (c[i] >= '0' && c[i] <= '9')
       printf("%c ", c[i]);
     else if (c[i] == '*' || c[i] == '/' || c[i] == '+' || c[i] == '-')
       push(s, c[i]);
