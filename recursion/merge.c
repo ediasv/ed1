@@ -1,36 +1,39 @@
 #include "list.h"
 
 /* */
-List* merge (List *A, List *B) {
-  /*Terminar.*/	
+List *merge(List *A, List *B) {
+  if (A == NULL)
+    return B;
+  if (B == NULL)
+    return A;
+  List *tmp;
+  if ()
 }
 
 /* */
-int main () {
+int main() {
   int k;
   List *A = NULL;
   for (k = 0; k <= 14; k += 2) {
-    A = insert_back (A, k);
+    A = insert_back(A, k);
   }
   printf("Lista = ");
-  print (A);
+  print(A);
   printf("\n");
 
   List *B = NULL;
   for (k = 1; k <= 9; k += 2) {
-    B = insert_back (B, k);
+    B = insert_back(B, k);
   }
   printf("Lista = ");
-  print (B);
+  print(B);
   printf("\n");
 
-  List *C = merge (A, B);
+  List *C = merge(A, B);
   printf("Lista = ");
-  print (C);
+  print(C);
   printf("\n");
 
-  destroy (C);
+  destroy(C);
   return 0;
 }
-
-
