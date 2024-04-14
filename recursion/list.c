@@ -1,4 +1,5 @@
 #include "list.h"
+#include <stdlib.h>
 
 /* */
 List *insert_back(List *l, int k) {
@@ -14,17 +15,18 @@ List *insert_back(List *l, int k) {
 
 /* */
 List *removek(List *l, int k) {
-  if (l == NULL)
-    return l;
-  List *current, *previous;
-  current = l;
-  previous = NULL;
-  while (current->next != NULL) {
-    if (current->data == k) {
-    }
+  List *current = l, *previous = NULL;
+  while ((current != NULL) && (current->data != k)) {
     previous = current;
     current = current->next;
   }
+  if (current == NULL)
+    return l; // nao achou k
+  if (previous == NULL)
+    l = current->next; // k esta na primeira posicao
+  else
+    previous->next = current->next;
+  free(current);
   return l;
 }
 
@@ -38,4 +40,13 @@ void print(List *l) {
 
 /* */
 void destroy(List *l) { /*Terminar*/
+  if (l != NULL) {
+    List *tmp;
+    while (l->next != NULL) {
+      tmp = l;
+      l = l->next;
+      free(tmp);
+    }
+    free(l);
+  }
 }

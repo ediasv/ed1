@@ -6,8 +6,15 @@ List *merge(List *A, List *B) {
     return B;
   if (B == NULL)
     return A;
-  List *tmp;
-  if ()
+  List *C;
+  if (A->data <= B->data) {
+    C = A;
+    C->next = merge(A->next, B);
+  } else {
+    C = B;
+    C->next = merge(A, B->next);
+  }
+  return C;
 }
 
 /* */
