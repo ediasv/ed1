@@ -1,15 +1,18 @@
-#include <math.h>
 #include "list.h"
+#include <math.h>
 
-void crivo (int n) { 
-  int i, sq = sqrt(n);       	
-  List *l = create ();
+void crivo(int n) {
+  int i, sq = sqrt(n);
+  List *l = create();
   /*Terminar!*/
-  destroy (l);
-}   
+  for (i = 2; i <= n; i++) {
+    // oi
+  }
+  destroy(l);
+}
 
-int main () {
+int main() {
   int n = 30;
-  crivo (n);
+  crivo(n);
   return 0;
-} 
+}
