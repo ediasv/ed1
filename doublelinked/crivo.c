@@ -5,9 +5,24 @@ void crivo(int n) {
   int i, sq = sqrt(n);
   List *l = create();
   /*Terminar!*/
-  List *tmp = l;
-  for (i = 0; i < sq; i++) {
+  for (i = 2; i <= n; i++)
+    l = insert_back(l, i);
+  print(l);
+
+  List *tmp;
+
+  for (i = 2; i <= sq; i++) {
+    tmp = l;
+    while (tmp->next != NULL) {
+      if (tmp != NULL) {
+        if (!(tmp->data % i) && (tmp->data != i))
+          tmp = remove_queue(tmp, tmp->data);
+        tmp = tmp->next;
+      }
+    }
   }
+
+  print(l);
   destroy(l);
 }
 
