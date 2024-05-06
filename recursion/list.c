@@ -13,6 +13,13 @@ List *insert_back(List *l, int k) {
   return l;
 }
 
+List *insert_front(List *l, int k) {
+  List *node = (List *)malloc(sizeof(List));
+  node->data = k;
+  node->next = l;
+  return node;
+}
+
 /* */
 List *removek(List *l, int k) {
   List *current = l, *previous = NULL;
@@ -50,3 +57,5 @@ void destroy(List *l) { /*Terminar*/
     free(l);
   }
 }
+
+List *create() { return NULL; }
