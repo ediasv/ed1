@@ -3,6 +3,13 @@
 /* */
 void bubble_sort (int *A, int n) {
   /*Terminar*/	
+  int i, j;
+  for (i = 0; i < n; i++) {
+    for (j = 0; j < n - 1 - i ; j++) {
+      if (A[j] > A[j + 1])
+        swap(A, j+1, j);
+    }
+  }
 }
 
 /* */
@@ -27,9 +34,7 @@ int main (int argc, char *argv[]) {
   }  
 
   start = clock();
-  print (A, n, "Input");
   bubble_sort (A, n);
-  print (A, n, "Sorted");
   end = clock();
   elapsed_time = (end - start)/(double)CLOCKS_PER_SEC;
   printf("Running time: %.2f\n", elapsed_time);
