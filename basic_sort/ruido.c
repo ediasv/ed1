@@ -64,7 +64,10 @@ Image* process (Image *in, int wsize) {
   int *A = (int *)malloc(wsize * wsize * sizeof(int));
   for (i = wsize; i < (in->ncols - wsize); i++) {
     for (j = wsize; j < (in->nrows - wsize); j++) {
-      // TODO:
+      /*
+         É necessário usar ordenação nesse exercício pois a mediana é o valor médio de um conjunto ordenado.
+         Além disso, quanto maior o tamanho da vizinhança, mais borrada fica a imagem e maior a borda preta da imagem.
+      */
       l = wsize/2;
       p = wsize/2;
       for (k = 0; k < (wsize*wsize); k++) {
