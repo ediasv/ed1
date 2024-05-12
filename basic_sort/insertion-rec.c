@@ -3,6 +3,16 @@
 /* */
 void insertion_sort_recursive (int *A, int n) {
   /*Terminar*/	
+  if (n > 2)
+    insertion_sort_recursive(A, n-1);
+
+  int ch = A[n-1];
+  int i = n-2;
+  while (i >= 0 && ch < A[i]) {
+    A[i+1] = A[i];
+    i--;
+  }
+  A[i+1] = ch;
 }
 
 /* */
@@ -27,9 +37,9 @@ int main (int argc, char *argv[]) {
   }  
 
   start = clock();
-  print (A, n, "Input");
+  // print (A, n, "Input");
   insertion_sort_recursive (A, n);
-  print (A, n, "Sorted");
+  // print (A, n, "Sorted");
   end = clock();
   elapsed_time = (end - start)/(double)CLOCKS_PER_SEC;
   printf("Running time: %.2f\n", elapsed_time);
