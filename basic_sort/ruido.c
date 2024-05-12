@@ -43,7 +43,7 @@ Image* read_image (FILE *file_in, int *nrows, int *ncols) {
 
 /* */
 void write_image (FILE *file_out, Image *out, int nrows, int ncols) {
-  int i, j;	
+  int i, j;
   fprintf(file_out, "P2\n%d %d\n255\n", out->ncols, out->nrows);
   for (j = 0; j < out->nrows; j++) {
     for (i = 0; i < out->ncols; i++) {
@@ -53,7 +53,7 @@ void write_image (FILE *file_out, Image *out, int nrows, int ncols) {
       }
     }
   }
-}  
+}
 
 /* */
 Image* process (Image *in, int wsize) {
@@ -64,7 +64,31 @@ Image* process (Image *in, int wsize) {
   int *A = (int *)malloc(wsize * wsize * sizeof(int));
   for (i = wsize; i < (in->ncols - wsize); i++) {
     for (j = wsize; j < (in->nrows - wsize); j++) {
-      /*Terminar*/	    
+      // TODO:
+      l = wsize/2;
+      p = wsize/2;
+      for (k = 0; k < (wsize*wsize); k++) {
+        A[k] = in->m[i-l][j-p];
+        l--; // desce uma linha
+        if (k && !(k%wsize)) { // se chegar na ultima linha da janela, volta pro topo e move pra coluna do lado
+          p--;
+          l = wsize/2;
+        }
+      }
+
+      /* insertion sort */
+      for (k = 1; k < (wsize*wsize); k++) {
+        l = A[k];
+        p = k - 1;
+        while (p >= 0 && l < A[p]) {
+          A[p + 1] = A[p];
+          p--;
+        }
+        A[p + 1] = l;
+      }
+
+      // mediana
+      out->m[i][j] = A[(wsize*wsize)/2];
     }
   }
   free(A); 
