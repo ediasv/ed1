@@ -101,8 +101,8 @@ Image* process (Image *in, int wsize) {
 /* */
 int main ( ) {
   int nrows, ncols;
-  FILE *file_in  = fopen("urso.pgm", "r");
-  FILE *file_out = fopen("saida.pgm", "w");
+  FILE *file_in  = fopen("lena_sr.pgm", "r");
+  FILE *file_out = fopen("lena_2.pgm", "w");
   /*tamanho da janela de remoção de ruído: */
   int wsize = 3; /*teste com ímpares 5, 7, 9, ...*/
   Image *in = read_image (file_in, &nrows, &ncols);
