@@ -4,6 +4,17 @@
 int partition (int A[], int left, int right) {
   /*Terminar*/
   /*Identico ao partition original.*/	
+  int pivot = A[right];
+  int i = left - 1;
+  int j;
+  for (j = left; j < right; j++) {
+    if (A[j] <= pivot) {
+      i++;
+      swap(A, i, j);
+    }
+  }
+  swap(A, i+1, right);
+  return i+1;
 }
 
 /* */
