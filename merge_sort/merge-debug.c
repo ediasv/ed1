@@ -1,13 +1,57 @@
 #include "utils.h"
+#include <stdio.h>
 
 /*Função intercala*/
-int merge (int A[], int l, int m, int r, int O[], int rlevel) {
+void merge (int A[], int l, int m, int r, int O[], int rlevel) {
   /*Terminar*/	
+  int i, j, k;
+  i = l;
+  j = m + 1;
+  k = l;
+
+  while (i <= m && j <= r) {
+    if (A[i] <= A[j]) {
+      O[k++] = A[i++];
+    }
+    else {
+      O[k++] = A[j++];
+    }
+  }
+
+  while (i <= m) {
+    O[k++] = A[i++];
+  }
+
+  while (j <= r) {
+    O[k++] = A[j++];
+  }
+
+  for (i = 0; i < rlevel; i++)
+    printf("  ");
+  printf("Intercalando = {");
+  for (i = 0; i <= r; i++) {
+    A[i] = O[i];
+    i != r? printf("%d, ", O[i]) : printf("%d", O[i]);
+  }
+  printf("}\n");
 }
 
 /*Função principal do algoritmo Merge-Sort.*/
 void merge_sort (int A[], int l, int r, int O[], int rlevel) {
   /*Terminar*/	
+  if (l < r) {
+    int m = (l + r) / 2;
+    int i;
+
+    for (i = 0; i < rlevel; i++)
+      printf("  ");
+    printf("Merge-Sort (%d, %d, %d)\n", l, m, r);
+
+    merge_sort(A, l, m, O, rlevel+1);
+    merge_sort(A, m+1, r, O, rlevel+1);
+
+    merge(A, l, m, r, O, rlevel+1);
+  }
 }
 
 /* */
