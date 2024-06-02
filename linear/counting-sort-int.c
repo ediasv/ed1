@@ -8,7 +8,6 @@ void counting_sort (int *A, int n, int range) {
   int *T = (int *)malloc(n * sizeof(int)); /*temporário*/
   int *C = (int *)malloc((range+1) * sizeof(int)); /*contador*/
 
-  // TODO:
   int max = A[0];
 
   for (i = 0; i < n; i++) {
@@ -55,8 +54,8 @@ int main (int argc, char *argv[]) {
   }*/
 
   int i;
-  //int n = atoi(argv[1]);
-  int n = 10; /*Teste com 10, 100K, 1M, ...*/
+  int n = atoi(argv[1]);
+  // int n = 10; /*Teste com 10, 100K, 1M, ...*/
   int range = 100; /*intervalo de valores sorteados*/
   int *A = (int *)malloc(n * sizeof(int));
 
@@ -65,9 +64,9 @@ int main (int argc, char *argv[]) {
   }  
 
   start = clock();
-  print (A, n, "Input");
+  // print (A, n, "Input");
   counting_sort (A, n, range);
-  print (A, n, "Sorted");
+  // print (A, n, "Sorted");
   end = clock();
   elapsed_time = (end - start)/(double)CLOCKS_PER_SEC;
   printf("Running time: %.2f\n", elapsed_time);

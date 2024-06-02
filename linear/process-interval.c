@@ -5,11 +5,33 @@ int* process_interval (int *A, int n, int range) {
   int i, j;
   int *C = (int *)malloc((range+1) * sizeof(int)); /*contador*/
   /*Terminar*/
+
+  int k = A[0];
+  for (i = 1; i < n; i++) {
+    if (A[i] > k) 
+      k = A[i];
+  }
+
+  for (i = 0; i <= k; i++)
+    C[i] = 0;
+
+  for (i = 0; i < n; i++)
+    C[A[i]]++;
+
+  return C;
 }
 
 int query (int *C, int n, int i, int j) {
   /*Terminar*/
   /*Não pode ter laço de repetição!*/
+
+  int soma = 0;
+  while (i <= j) {
+    soma += C[i];
+    i++;
+  }
+
+  return soma;
 }
 
 /* */
