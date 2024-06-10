@@ -1,10 +1,7 @@
-#include <string.h>
-#include <math.h>
 #include "utils.h"
 
 /* */
 int linear_search (char **words, int n, char *key) {
-  /*Terminar*/
   int i;
   for (i = 0; i < n; i++) {
     if (!strcmp(words[i], key)) {
@@ -16,7 +13,6 @@ int linear_search (char **words, int n, char *key) {
 
 /* */
 int binary_search_iterative (char **words, int n, char *key) {
-  /*Terminar*/
   int e = 0;
   int d = n - 1;
   while (e <= d) {
@@ -33,7 +29,6 @@ int binary_search_iterative (char **words, int n, char *key) {
 
 /* */
 int binary_search_recursive (char **words, int l, int r, char *key) {
-  /*Terminar*/
   int m = (l + r) / 2;
   if (l <= r) {
     if (!strcmp(key, words[m])) {
